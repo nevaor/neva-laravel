@@ -22,9 +22,6 @@ class TabunganController extends Controller
         return view('index')->with('coba',$coba);
     }
 
-    
-
-
     public function store (Request $request){
         $request->validate([
             'nama'=> 'required',
@@ -45,7 +42,6 @@ class TabunganController extends Controller
 
     }
 
-
     public function edit ($id){
         $data = Tabungan::where('id',$id)->first();
         // dd($data);
@@ -62,7 +58,6 @@ class TabunganController extends Controller
             'rombel' => 'required',
             'rayon' => 'required',
             'action' => 'required',
-            'uang' => 'required',
         ]);
 
         $data = Tabungan::where('id', $id)->first();
@@ -72,9 +67,7 @@ class TabunganController extends Controller
         } else {
             if ($data['jumlah_uang'] < $request->uang) {
                 return redirect(route('index'))->with('fail', 'Salda Anda Kurang');
-            } elseif ($data['jumlah_uang'] == $request->uang) {
-                $total_money = $data['jumlah_uang'] - $request->uang;
-            } else {
+            } else{
                 $total_money = $data['jumlah_uang'] - $request->uang;
             }
         }
@@ -89,16 +82,11 @@ class TabunganController extends Controller
         ]);
 
         return redirect(route('index'));
-    }  
+    }
 
     public function destroy($id) {
         Tabungan::where('id', $id)->delete();
         return redirect()->back()->with('delete', 'Deleted Successfully');
     }
-
-
-
-
-
 
 }
