@@ -10,5 +10,5 @@ class Tabungan extends Model
     use HasFactory;
 
     protected $table = 'tabungans';
-    protected $fillable = ['nama', 'NIS', 'rayon', 'rombel', 'Jumlah_uang'];
+    protected $fillable = ['nama', 'NIS', 'rayon', 'rombel', 'jumlah_uang'];
 }

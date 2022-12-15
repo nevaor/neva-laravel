@@ -21,7 +21,6 @@ Route::get('/', function () {
 
 Route::get('/index',[TabunganController::class,'create'])->name('index');
 
-
 Route::post('/store', [TabunganController::class, 'store'])->name('store');
 
 Route::get('/edit/{id}', [TabunganController::class,'edit'])->name('edit');
